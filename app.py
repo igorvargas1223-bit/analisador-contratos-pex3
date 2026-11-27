@@ -19,7 +19,7 @@ with aba1:
             paginas_texto = [pagina.extract_text() or "" for pagina in leitor.pages]
             texto_contrato = "\n".join(paginas_texto)
             st.success(f"PDF lido com sucesso! ({len(leitor.pages)} página(s) extraída(s)).")
-        except Exception as e:
+        except Exception:
             st.error("Não foi possível ler este PDF. Tente colar o texto na aba ao lado.")
 
 with aba2:
@@ -33,9 +33,9 @@ with aba2:
 
 def analisar_contrato(texto):
     texto_lower = texto.lower()
-    achados_lgpd =
-    achados_trabalho =
-    dicionario_encontrado =
+    achados_lgpd = list()
+    achados_trabalho = list()
+    dicionario_encontrado = list()
 
     # 1. Regras de LGPD (Lei 13.709/2018)
     regras_lgpd = [
@@ -110,6 +110,10 @@ if st.button("Analisar Documento", type="primary"):
             st.markdown("### 📖 Tradutor de Termos Jurídicos")
             for termo in glossario:
                 st.markdown(f"- {termo}")
+
+st.markdown("---")
+st.caption("Projeto de Extensão (PEX III) - Ciência da Computação | Ferramenta gratuita de educação digital e leitura contratual para a comunidade.")
+
 
 st.markdown("---")
 st.caption("Projeto de Extensão (PEX III) - Ciência da Computação | Ferramenta gratuita de educação digital e leitura contratual para a comunidade.")
